@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  /* The app is dark-only. These must match the body classes in layout.tsx,
+     otherwise this unlayered rule wins and light-mode visitors get a white
+     page with light text. */
+  --background: #0c0d10;
+  --foreground: #f2f4f8;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Landing page buttons (shared so every CTA looks the same). */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#2f6fed] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#4b82f0] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8fb0f5];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-[#2c323d] px-5 py-3 text-sm font-semibold text-[#d7dbe3] transition-colors hover:border-[#3f4756] hover:bg-[#151920] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8fb0f5];
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
